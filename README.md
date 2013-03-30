@@ -2,7 +2,7 @@ How to Run
 ==========
 
 #### Step 1. Install Android SDK (ADK)
-You can download from http://developer.android.com/sdk/index.html We recomment to use SDK 4.1.2 or higher version. After install ADK, please make sure that you have following five files.
+Download from http://developer.android.com/sdk/index.html. We recomment to use SDK 4.1.2 or higher version. After install ADK, please make sure that you have following five files.
  
 - ADK_ROOT/platform-tools/adb
 - ADK_ROOT/tools/lib/ddms.jar
@@ -13,6 +13,8 @@ You can download from http://developer.android.com/sdk/index.html We recomment t
 
 
 #### Step 2. Create Emulator
+Do following steps to create Android Vritual Device. The steps will create emulator image.
+
 1. Luanch SDK Manager (ADK_ROOT/tools/android)
 2. Select 'Tools' -> 'Manage AVDs'
 3. Push 'New' button to create emulator.
@@ -23,16 +25,18 @@ You can find the official guideline about emulator management:
 
 
 #### Step 3. Start Emulator
-We recommand following command:
+We recommand following command to setup necessary environment variable:
 ```
 <ADK_ROOT>/tools/emulator -avd <AVD_NAME> -wipe-data -dns-server 127.0.0.1
 ```
 -wipe-data options it to start emulator from the factory-reset state -dns-server 127.0.0.1 option is a trick to disabling internet access. <AVD_NAME> refer the name of AVD created by step 2.
 
-Step 4. Download SiwftHand Tool and benchmark program.
+
+#### Step 4. Download SiwftHand Tool and benchmark programs.
 You can download it from /dist directory of this repository.
 
-Step 5. Set environment variables. Following command will do the work.
+
+#### Step 5. Set environment variables. Following command will do the work.
 ```
 export ADK_ROOT=<ADK_ROOT>
 export ADK_LIB="$ADK_ROOT/tools/lib"
