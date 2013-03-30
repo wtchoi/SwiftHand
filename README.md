@@ -24,30 +24,30 @@ You can find the official guideline about emulator management:
 
 Step 3. Start Emulator
 We recommand following command:
-'''
-<ADK_ROOT>/tools/emulator -avd <AVD_NAME> -wipe-data -dns-server 127.0.0.1'
-'''
+```
+<ADK_ROOT>/tools/emulator -avd <AVD_NAME> -wipe-data -dns-server 127.0.0.1
+```
 -wipe-data options it to start emulator from the factory-reset state -dns-server 127.0.0.1 option is a trick to disabling internet access. <AVD_NAME> refer the name of AVD created by step 2.
 
 Step 4. Download SiwftHand Tool and benchmark program.
 You can download it from /dist directory of this repository.
 
 Step 5. Set environment variables. Following command will do the work.
-'''
+```
 export ADK_ROOT=<ADK_ROOT>
 export ADK_LIB="$ADK_ROOT/tools/lib"
 export CLASSPATH="$ADK_LIB/ddml.jar:$ADK_LIB/ddmlib.jar:$ADK_LIB/chimpchat.jar:$ADK_LIB/guava-13.0.1.jar:<SWIFTHAND_DIR>/SwiftHand.jar:$CLASSPATH"
-'''
+```
 
 Step 6. Execute Tool
 The tool can be executed using following command..
-'''
+```
 java edu.berkeley.wtchoi.swift.CommandLine
-''' 
+``` 
 For example, to test mininote using SwiftHand with random seed 0 for 1 hour:
-'''
+```
 java edu.berkeley.wtchoi.swift.CommandLine mininote.apk swift 3600 0 <OUTPUT_DIR> 
-'''
+```
 
 
 
