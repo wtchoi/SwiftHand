@@ -2,13 +2,13 @@ How to Run
 ----------
 
 Step 1. Install Android SDK (ADK)
-You can download from 'http://developer.android.com/sdk/index.html' We recomment to use SDK 4.1.2 or higher version. After install the library, please make sure that you have following five files.
+You can download from http://developer.android.com/sdk/index.html We recomment to use SDK 4.1.2 or higher version. After install ADK, please make sure that you have following five files.
  
-- <ADK_ROOT>/platform-tools/adb 
-- <ADK_ROOT>/tools/lib/ddms.jar
-- <ADK_ROOT>/tools/lib/ddmlib.jar
-- <ADK_ROOT>/tools/lib/chimpchat.jar
-- <ADK_ROOT>/tools/lib/guava-13.0.1.jar
+- '<ADK_ROOT>/platform-tools/adb'
+- '<ADK_ROOT>/tools/lib/ddms.jar'
+- '<ADK_ROOT>/tools/lib/ddmlib.jar'
+- '<ADK_ROOT>/tools/lib/chimpchat.jar'
+- '<ADK_ROOT>/tools/lib/guava-13.0.1.jar'
 
 
 
