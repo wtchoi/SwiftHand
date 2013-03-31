@@ -1,7 +1,7 @@
 Introduction
 =============
-*SwiftHand* is an automated Android GUI testing tool working. The tool uses machine learning to
-learn a model of the app during testing, uses the learned model to generate user inputs that visit
+*SwiftHand* is an automated Android GUI testing tool. The tool uses machine learning to
+learn a model of the target app during testing, uses the learned model to generate user inputs that visit
 unexplored states of the app, and uses the execution of the app on the generated inputs to refine
 the model.
 
