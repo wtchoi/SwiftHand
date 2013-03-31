@@ -1,3 +1,13 @@
+Introduction
+=============
+*SwiftHand* is an automated Android GUI testing tool working. The tool uses machine learning to
+learn a model of the app during testing, uses the learned model to generate user inputs that visit
+unexplored states of the app, and uses the execution of the app on the generated inputs to refine
+the model.
+
+The main purpose of the repository is to provide working demo of the latest version of the *SwiftHand*. Source code will be updated soon.
+
+
 How to Run 
 ==========
 
@@ -51,4 +61,4 @@ java edu.berkeley.wtchoi.swift.CommandLine
 For example, to test mininote using SwiftHand with random seed 0 for 1 hour:
 ```
 java edu.berkeley.wtchoi.swift.CommandLine mininote.apk swift 3600 0 <OUTPUT_DIR> 
-``
+```
