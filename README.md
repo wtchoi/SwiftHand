@@ -51,7 +51,4 @@ java edu.berkeley.wtchoi.swift.CommandLine
 For example, to test mininote using SwiftHand with random seed 0 for 1 hour:
 ```
 java edu.berkeley.wtchoi.swift.CommandLine mininote.apk swift 3600 0 <OUTPUT_DIR> 
-```
-
-
-
+``
