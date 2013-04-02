@@ -6,8 +6,8 @@ unexplored states of the app, and uses the execution of the app on the generated
 the model.
 
 The main purpose of the repository is to provide working demo of the latest version of the
-*SwiftHand*. Currrently, source code of back-end (testing engine) is available.
-front-end(instrumentation) and build script will be added soon 
+*SwiftHand*. The repository provides ready-instrumented benchmakrs and back-end(testing engine) binary.
+Also source code for both front-end(instrumentation) and back-end is available. Build script will be added soon 
 
 
 How to Run 
