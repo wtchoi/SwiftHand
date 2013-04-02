@@ -5,7 +5,9 @@ learn a model of the target app during testing, uses the learned model to genera
 unexplored states of the app, and uses the execution of the app on the generated inputs to refine
 the model.
 
-The main purpose of the repository is to provide working demo of the latest version of the *SwiftHand*. Source code will be updated soon.
+The main purpose of the repository is to provide working demo of the latest version of the
+*SwiftHand*. Currrently, source code of back-end (testing engine) is available.
+front-end(instrumentation) and build script will be added soon 
 
 
 How to Run 
