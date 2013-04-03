@@ -94,7 +94,8 @@ With compiled jar, executing the testing tool is much simpler.
 ```
 java -jar back-end-0.1-jar-with-dependencies.jar benchmark/mininote.modified.apk swift 3600 0 <OUTPUT_DIR>
 ```
-
+We assume that a running emulator (or phone) is connected to ADB. If not, please create and boot
+an emulator before start testing.
 
 
  
