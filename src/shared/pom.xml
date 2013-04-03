@@ -6,7 +6,7 @@
   <parent>
   	<groupId>edu.berkeley.wtchoi.swift</groupId>
   	<artifactId>swifthand</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1</version>
   </parent>
 
   <artifactId>shared</artifactId>

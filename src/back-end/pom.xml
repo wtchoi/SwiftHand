@@ -6,7 +6,7 @@
   <parent>
   	<groupId>edu.berkeley.wtchoi.swift</groupId>
   	<artifactId>swifthand</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1</version>
   </parent>
 
   <artifactId>back-end</artifactId>
@@ -20,9 +20,7 @@
 		<artifactId>maven-assembly-plugin</artifactId>
 		<version>2.4</version>
 		<configuration>
-		  <descriptor>src/main/resources/assembly.xml</descriptor>
-<!--		  <excludeArtifactIds>junit, ddmlib, ddms, chimpchat, guava-13.0.1</excludeArtifactIds>
-		  <excludeTransitive>true</excludeTransitive>-->
+		  <descriptor>assembly.xml</descriptor>
 		  <archive>
             <manifest>
 		    <mainClass>edu.berkeley.wtchoi.swift.CommandLine</mainClass>			 
@@ -46,7 +44,7 @@
 	<dependency>
 		<groupId>edu.berkeley.wtchoi.swift</groupId>
 		<artifactId>shared</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>0.1</version>
         
     </dependency>
 	<dependency>

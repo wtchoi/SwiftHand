@@ -16,9 +16,6 @@
     </dependencySet>
     <dependencySet>
 	  <outputDirectory>/</outputDirectory>	
-	  <!--	  <excludes>
-	    <exclude>com.android.tools:*</exclude>
-	  </excludes> -->
 	  <unpack>true</unpack>
 	  <useTransitiveDependencies>false</useTransitiveDependencies>
 	  <scope>system</scope>
