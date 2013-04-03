@@ -7,11 +7,13 @@ the model.
 
 The main purpose of the repository is to provide working demo of the latest version of the
 *SwiftHand*. The repository provides ready-instrumented benchmakrs and back-end(testing engine) binary.
-Also source code for both front-end(instrumentation) and back-end is available. Build script will be added soon 
+Also source code for both front-end(instrumentation) and back-end is available.  Currently, maven build
+script for the back-end is available. A script for the front-end will be added soon.
 
 
-How to Run 
-==========
+
+How to Use Compiled Back-End 
+============================
 
 #### Step 1. Install Android SDK (ADK)
 Download from http://developer.android.com/sdk/index.html. We recomment to use SDK 4.1.2 or higher version. After install ADK, please make sure that you have following five files.
@@ -64,4 +66,37 @@ For example, to test mininote using SwiftHand with random seed 0 for 1 hour:
 ```
 java edu.berkeley.wtchoi.swift.CommandLine benchmark/mininote.modified.apk swift 3600 0 <OUTPUT_DIR> 
 ```
+
+
+How to Compile and Run
+======================
+#### Step 1. Install Maven.
+Maven (http://maven.apache.org) is a project management and comprehension tool.
+
+
+#### Step 2. Set up environment variables.
+Build script requires *ADK_ROOT* environemtn variable. Set the variable to the path of your
+installed Android SDK.
+
+#### Step 3. Build
+Type following command to compile the project
+```
+cd src
+mvn package
+```
+If build process is succesfull, you will find following files:
+```
+back-end/target/back-end-0.1-jar-with-dependencies.jar
+```
+
+#### Step 4. Execute Tool
+With compiled jar, executing the testing tool is much simpler.
+```
+java -jar back-end-0.1-jar-with-dependencies.jar benchmark/mininote.modified.apk swift 3600 0 <OUTPUT_DIR>
+```
+
+
+
+ 
+
 
