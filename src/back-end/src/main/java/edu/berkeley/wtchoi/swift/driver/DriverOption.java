@@ -52,7 +52,7 @@ public class DriverOption {
     private boolean mTraceLogging = true;
 
     public void getAdbPathFromEnvironment(){
-        adb = System.getenv("ANDROID_SDK_ROOT") + "/platform-tools/adb";
+        adb = System.getenv("ADK_ROOT") + "/platform-tools/adb";
     }
 
     //to check whether all basic information is there

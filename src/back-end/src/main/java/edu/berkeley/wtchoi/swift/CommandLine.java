@@ -110,7 +110,7 @@ public class CommandLine {
             String instruction =
                     "USAGE\n"+
                     "------\n" +
-                    "export ANDROID_SDK_ROOT=<ADK_ROOT>\n"
+                    "export ADK_ROOT=<ADK_ROOT>\n"
                     + "export CLASSPATH=<ADK_ROOT>/ddms.jar:<ADK_ROOT>/ddmlib.jar:<ADK_ROOT>/guava-13.0.1.jar:<ADK_ROOT>/chimpchat.jar:./ChimpChat.jar\n"
                     + "java ed.berkeley.wtchoi.swift.CommandLine <target apk> <mode> <timeout(s)> <random seed> <output dir> [optinos]\n"
                     + "\n"
