@@ -12,7 +12,7 @@ import edu.berkeley.wtchoi.swift.util.IdentifierPool;
  * SwiftHand Project follows BSD License
  *
  * [The "BSD license"]
- * Copyright (c) 2013 Wontae Choi.
+ * Copyright (c) 2013 The Regents of The University of California.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
