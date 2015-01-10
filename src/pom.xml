@@ -8,10 +8,13 @@
   <packaging>pom</packaging>
   <version>0.1</version>
   <name>SiwftHand</name>
+
   <modules>
     <module>shared</module>
     <module>back-end</module>
+    <module>front-end</module>
   </modules>
+
   <build>
     <plugins>
       <plugin>

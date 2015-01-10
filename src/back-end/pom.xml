@@ -82,7 +82,7 @@
       <version>local</version>
       <scope>system</scope>
       <systemPath>
-      ${env.ADK_ROOT}/tools/lib/guava-13.0.1.jar</systemPath>
+      ${env.ADK_ROOT}/tools/lib/guava-17.0.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>edu.berkeley.wtchoi.gv</groupId>
