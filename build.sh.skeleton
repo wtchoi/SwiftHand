@@ -53,4 +53,7 @@ echo "set -x" >> $TS
 echo "export ADK_ROOT=$ADK_ROOT" >> $TS
 echo "export JAVA_HOME=$JAVA_HOME" >> $TS
 echo "java -jar $SWIFT_ROOT/$BACK_END_PATH \${*:1}" >> $TS
+echo "if ((\$? > 0));then" >>$TS
+echo "	cat USAGE" >> $TS
+echo "fi" >> $TS
 chmod 700 $TS

@@ -5,28 +5,31 @@ learn a model of the target app during testing, uses the learned model to genera
 unexplored states of the app, and uses the execution of the app on the generated inputs to refine
 the model.
 
-The main purpose of the repository is to provide working demo of the version of the
-*SwiftHand* tool submited to OOPSLA'13 conference.
-The repository provides ready-instrumented benchmakrs and back-end(testing engine) binary.
-Also source code for both front-end (instrumentation) and back-end is available.  
+The main purpose of the repository is to provide a working demo of the version of the
+*SwiftHand* tool submited to the OOPSLA'13 conference.
+The repository provides source code for both front-end (instrumentation) and back-end (test engine).
+Example applications to paly with are also included.
 
+The document is assuming that your system is either Linux or OSX.
+If you are Windows user, we recommend to use a free virtuallization tool
+such as VirtualBox and Docker.
 
-INSTALLATION
+Installation
 ============
 
 #### Step 1. Install Android Development Kit (ADK)
 
 Before playing with SwiftHand, please make sure to install the Android SDK (ADK). 
 You can download it from http://developer.android.com/sdk/index.html. 
-We recommend to use ADK then 4.1.2 or higher. 
+We recommend to use ADK 4.1.2 or a higher version. 
 After installing ADK, please make sure that you have following six files.
  
-- ADK_ROOT/platform-tools/adb
-- ADK_ROOT/tools/lib/ddms.jar
-- ADK_ROOT/tools/lib/ddmlib.jar
-- ADK_ROOT/tools/lib/chimpchat.jar
-- ADK_ROOT/tools/lib/guava-17.0.jar (version may vary)
-- ADK_ROOT/build-tools/21.0.3/lib/dx.jar (version may vary)
+- <ADK_ROOT>/platform-tools/adb
+- <ADK_ROOT>/tools/lib/ddms.jar
+- <ADK_ROOT>/tools/lib/ddmlib.jar
+- <ADK_ROOT>/tools/lib/chimpchat.jar
+- <ADK_ROOT>/tools/lib/guava-17.0.jar (version may vary)
+- <ADK_ROOT>/build-tools/21.0.3/lib/dx.jar (version may vary)
 
 Please memo your guava.jar version (17.0 in the example), your build-tools version (21.0.3 in the example),
 and the path to the ADK root directory. We will need this information later.
@@ -43,13 +46,16 @@ Any recent version of Maven 3 will work.
 
 
 #### Step 4. Clone the SwiftHand repository.
-Now, it is a time to start the real job.
+Clone the SwiftHand repository to your local disk. Following command will do the work.
+
+```
+git clone git@github.com:wtchoi/SwiftHand.git
+```
 
 
 #### Step 5. Editing the build script.
 Open *build.sh.skeleton*, a skeleton of the main build script. 
 You will find out following four commented lines. 
-Assign an appropriate values to variable and uncomment it.
 
 ```
 #export ADK_ROOT=""
@@ -58,7 +64,9 @@ Assign an appropriate values to variable and uncomment it.
 #export DX_VERSION=""
 ```
 
-Once the editing is done, typing the following commands:
+Assign appropriate values to the variables and uncomment them.
+Once the editing is done, type the following commands:
+
 ```
 cp build.sh.skeleton build.sh
 chmod 700 build.sh
@@ -66,12 +74,13 @@ chmod 700 build.sh
 
 #### Step 6. Build.
 
-Now is the time to do the actual build! 
+Now, it is the time to do the actual build.
+
 ```
 ./build.sh
 ```
 
-If the build process was succesful,
+If the build process is succesful,
 you will see two new files in the directory: 
 *inst.sh* and *test.sh*. Voila! 
 
@@ -80,14 +89,14 @@ Using the Back-End
 ====================
 
 #### Step 1. Create an Emulator
-Do following steps to create Android Vritual Device. The steps will create emulator image.
+Do following steps to create Android Vritual Device. The steps will create an emulator image.
 
-1. Luanch SDK Manager (ADK_ROOT/tools/android)
+1. Luanch SDK Manager (<ADK_ROOT>/tools/android)
 2. Select 'Tools' -> 'Manage AVDs'
 3. Push 'New' button to create emulator.
-To reproduce the experimental result in the paper, We recommand to use 'Galaxy S' as a device, 'API Level 16' as a target, 'ARM' as a CPU/API. This step creates Android Virtual Device (AVD) image. 
+To reproduce the experimental result in the paper, We recommand to use 'Nexus S' as a device, 'API Level 16' as a target, 'ARM' as a CPU/API. This step creates Android Virtual Device (AVD) image. 
 
-You can find the official guideline about emulator management:
+You can find the official guideline about the emulator management from here:
 'http://developer.android.com/tools/devices/managing-avds.html'. 
 
 
@@ -96,18 +105,18 @@ We recommand following command to setup necessary environment variable:
 ```
 <ADK_ROOT>/tools/emulator -avd <AVD_NAME> -wipe-data -dns-server 127.0.0.1
 ```
--wipe-data options it to start emulator from the factory-reset state -dns-server 127.0.0.1 option is a trick to disabling internet access. <AVD_NAME> refer the name of AVD created by step 2.
+-wipe-data options it to start an emulator from the factory-reset state -dns-server 127.0.0.1 option is a trick to disabling internet access. <AVD_NAME> refer the name of AVD created by step 2.
 
 
 #### Step 3. Execute the Back-End
 The tool can be executed using the test.sh script generaated by the build scipt.
-For example, to test mininote using SwiftHand with random seed 0 for 1 hour:
+For example, to test *dist/benchmark/mininote.modified.apk* using SwiftHand with random seed 0 for 1 hour:
 ```
 ./test.sh dist/benchmark/mininote.modified.apk swift 3600 0 <OUTPUT_DIR> 
 ```
 
-Please replace <OUTPUT_DIR> to the output directory you want. 
-You can try any programs in the benchmark directory by replacing 'mininote.modified.apk' to an appropriate value.
+Please replace <OUTPUT_DIR> to the output directory you want.
+You can try any program in the benchmark directory by replacing 'mininote.modified.apk' to an appropriate value.
 
 
 
@@ -121,14 +130,16 @@ With a compiled front-end, you can instrument an apk file using the inst.sh scri
 ./inst.sh <TARGET.apk>
 ```
 
-Please make sure to replace <TARGET.apk> with the path of the target apk file. You can find two example target files located in *dist/unmofidied* directory.
+Please make sure to replace <TARGET.apk> with the path to the target apk file. You can find two example target files located in *dist/unmofidied* directory.
 If the instrumentation process success, the front-end generates several files including the following two files,
-in the direcory containing the source apk file.
+in the direcory containing the original apk file.
 
 - TARGET.modified.apk
-- TARGET.json
+- TARGET.modified.json
 
-If you have these two files, you are ready to play with the back-end. Please make sure to have these two files in the same directory.
+*TARGET.modified.apk* is an instrumented application file.
+*TARGET.modified.json* is a text file containing an information about the target application.
+To run a test, the back end requires both files to be in a singles directory.
 
 Acknowledgements
 ================
