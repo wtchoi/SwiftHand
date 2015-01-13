@@ -106,7 +106,7 @@
       <version>local</version>
       <scope>system</scope>
       <systemPath>
-      ${env.ADK_ROOT}/build-tools/21.1.2/lib/dx.jar</systemPath>
+      ${env.ADK_ROOT}/build-tools/${env.DX_VERSION}/lib/dx.jar</systemPath>
     </dependency>
     <dependency>
         <groupId>com.sun</groupId>
