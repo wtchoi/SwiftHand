@@ -1,0 +1,16 @@
+USAGE
+------
+export ADK_ROOT=<ADK_ROOT>
+./test.sh <target apk> <mode> <timeout(s)> <random seed> <output dir> [optinos]
+
+mode: interactive, learningAU (= swift), learningNU, learningA, learningN, learningWithScout, lstar, random
+options:
+        -n<prefix>   : Test name. This will become the prefix of output files. (default = <target apk file name>)
+        -c<cycle>    : Test progress logging cycle. (deafult = 1)
+        -i<cycle>    : Test guide algorithm logging cycle. (default = 1)
+        -v           : Verbosely print information to the screen (default = false)
+        -x<filename> : A file containing the list of packages to exclude from coverage measurement (default = null)
+        -d<deviceID> : The device ID of machine running the target application (default = a random available device)
+        -p<port>     : Port to use to communicate with an Android device. (default = 13337)
+        -s<msec>     : Necessary stable interval. (default = 1080ms)
+        -t<msec>     : Transition timeout (default = 30000msec)

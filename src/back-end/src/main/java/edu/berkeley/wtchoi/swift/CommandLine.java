@@ -106,30 +106,7 @@ public class CommandLine {
         }
         catch(Exception e){
             e.printStackTrace();
-
-            String instruction =
-                    "USAGE\n"+
-                    "------\n" +
-                    "export ADK_ROOT=<ADK_ROOT>\n"
-                    + "export CLASSPATH=<ADK_ROOT>/ddms.jar:<ADK_ROOT>/ddmlib.jar:<ADK_ROOT>/guava-13.0.1.jar:<ADK_ROOT>/chimpchat.jar:./ChimpChat.jar\n"
-                    + "java ed.berkeley.wtchoi.swift.CommandLine <target apk> <mode> <timeout(s)> <random seed> <output dir> [optinos]\n"
-                    + "\n"
-                    + "mode: interactive, learningAU, learningNU, learningA, learningN, learningWithScout, lstar\n"
-                    + "options:\n"
-                    + "        -n<prefix>   : test name. This will become the prefix of output files. (default = <target apk file name>)\n"
-                    + "        -c<cycle>    : test summary dump frequency. (deafult = 1)\n"
-                    + "        -i<cycle>    : test guide internal dump frequency. (default = 1)\n"
-                    + "        -v           : verbosely print screen information and it's analysis result (default = false)\n"
-                    + "        -x<filename> : list of packages to exclude from coverage measurement (default = null)\n"
-                    + "        -d<deviceID> : device running target application (default = random available device)\n"
-                    + "        -p<port>     : port to use to communicate with phone. (default = 13337)\n"
-                    + "        -s<msec>     : necessary stable interval. (default = 1080ms)\n"
-                    + "        -t<msec>     : transition timeout (default = 30000msec)\n";
-
-
-
-            System.out.println("Cannot handle parameters\n" + instruction);
-            Runtime.getRuntime().halt(0);
+            Runtime.getRuntime().halt(1);
         }
 
 
