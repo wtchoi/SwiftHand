@@ -9,7 +9,9 @@
     <version>0.1</version>
   </parent>
 
+  <groupId>edu.berkeley.wtchoi.swift</groupId>
   <artifactId>shared</artifactId>
+  <version>0.1</version>
   <packaging>jar</packaging>
   <name>SiwftHand Shared Modulet</name>
 
@@ -18,7 +20,7 @@
 	<dependency>
 		<groupId>com.google.android</groupId>
 		<artifactId>android</artifactId>
-		<version>4.1.1.4</version>		
+		<version>4.1.1.4</version>	
 	</dependency>
     <dependency>
       <groupId>junit</groupId>

@@ -9,9 +9,11 @@
     <version>0.1</version>
   </parent>
   <artifactId>front-end</artifactId>
+  <version>0.1</version>
   <packaging>jar</packaging>
   <name>SiwftHand Frontend : Instrument</name>
- 
+
+        
   <build>
     <plugins>
        <plugin>
@@ -104,7 +106,14 @@
       <version>local</version>
       <scope>system</scope>
       <systemPath>
-      ${env.ADK_ROOT}/build-tools/21.0.0/lib/dx.jar</systemPath>
+      ${env.ADK_ROOT}/build-tools/21.1.2/lib/dx.jar</systemPath>
+    </dependency>
+    <dependency>
+        <groupId>com.sun</groupId>
+        <artifactId>tools</artifactId>
+        <version>local</version>
+        <scope>system</scope>
+        <systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
     </dependency>
   </dependencies>
 </project>

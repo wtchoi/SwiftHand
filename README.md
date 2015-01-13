@@ -5,28 +5,81 @@ learn a model of the target app during testing, uses the learned model to genera
 unexplored states of the app, and uses the execution of the app on the generated inputs to refine
 the model.
 
-The main purpose of the repository is to provide working demo of the latest version of the
-*SwiftHand*. The repository provides ready-instrumented benchmakrs and back-end(testing engine) binary.
-Also source code for both front-end(instrumentation) and back-end is available.  Currently, maven build
-script for the back-end is available. A script for the front-end will be added soon.
+The main purpose of the repository is to provide working demo of the version of the
+*SwiftHand* tool submited to OOPSLA'13 conference.
+The repository provides ready-instrumented benchmakrs and back-end(testing engine) binary.
+Also source code for both front-end (instrumentation) and back-end is available.  
 
 
+INSTALLATION
+============
 
-How to Use Compiled Back-End 
-============================
+#### Step 1. Install Android Development Kit (ADK)
 
-#### Step 1. Install Android SDK (ADK)
-Download from http://developer.android.com/sdk/index.html. We recomment to use SDK 4.1.2 or higher version. After install ADK, please make sure that you have following five files.
+Before playing with SwiftHand, please make sure to install the Android SDK (ADK). 
+You can download it from http://developer.android.com/sdk/index.html. 
+We recommend to use ADK then 4.1.2 or higher. 
+After installing ADK, please make sure that you have following six files.
  
 - ADK_ROOT/platform-tools/adb
 - ADK_ROOT/tools/lib/ddms.jar
 - ADK_ROOT/tools/lib/ddmlib.jar
 - ADK_ROOT/tools/lib/chimpchat.jar
-- ADK_ROOT/tools/lib/guava-13.0.1.jar
+- ADK_ROOT/tools/lib/guava-17.0.jar (version may vary)
+- ADK_ROOT/build-tools/21.0.3/lib/dx.jar (version may vary)
+
+Please memo your guava.jar version (17.0 in the example), your build-tools version (21.0.3 in the example),
+and the path to the ADK root directory. We will need this information later.
+
+#### Step 2. Install JDK 7
+
+The SwiftHand implementation works with JDK version 6 and 7, and we recommend to use JDK version 7. 
+Please check the path to the JDK root directory. We will need this information later.
 
 
+#### Step 3. Install Maven.
+Maven (http://maven.apache.org) is a project management and comprehension tool.
+Any recent version of Maven 3 will work. 
 
-#### Step 2. Create Emulator
+
+#### Step 4. Clone the SwiftHand repository.
+Now, it is a time to start the real job.
+
+
+#### Step 5. Editing the build script.
+Open *build.sh.skeleton*, a skeleton of the main build script. 
+You will find out following four commented lines. 
+Assign an appropriate values to variable and uncomment it.
+
+```
+#export ADK_ROOT=""
+#export JAVA_HOME=""
+#export GUAVA_VERSION=""
+#export DX_VERSION=""
+```
+
+Once the editing is done, typing the following commands:
+```
+cp build.sh.skeleton build.sh
+chmod 700 build.sh
+```
+
+#### Step 6. Build.
+
+Now is the time to do the actual build! 
+```
+./build.sh
+```
+
+If the build process was succesful,
+you will see two new files in the directory: 
+*inst.sh* and *test.sh*. Voila! 
+
+
+Using the Back-End
+====================
+
+#### Step 1. Create an Emulator
 Do following steps to create Android Vritual Device. The steps will create emulator image.
 
 1. Luanch SDK Manager (ADK_ROOT/tools/android)
@@ -38,7 +91,7 @@ You can find the official guideline about emulator management:
 'http://developer.android.com/tools/devices/managing-avds.html'. 
 
 
-#### Step 3. Start Emulator
+#### Step 2. Start an Emulator
 We recommand following command to setup necessary environment variable:
 ```
 <ADK_ROOT>/tools/emulator -avd <AVD_NAME> -wipe-data -dns-server 127.0.0.1
@@ -46,58 +99,46 @@ We recommand following command to setup necessary environment variable:
 -wipe-data options it to start emulator from the factory-reset state -dns-server 127.0.0.1 option is a trick to disabling internet access. <AVD_NAME> refer the name of AVD created by step 2.
 
 
-#### Step 4. Download SiwftHand Tool and benchmark programs.
-You can download it from /dist directory of this repository.
-
-
-#### Step 5. Set environment variables. Following command will do the work.
-```
-export ADK_ROOT=<ADK_ROOT>
-export ADK_LIB="$ADK_ROOT/tools/lib"
-export CLASSPATH="$ADK_LIB/ddml.jar:$ADK_LIB/ddmlib.jar:$ADK_LIB/chimpchat.jar:$ADK_LIB/guava-13.0.1.jar:<SWIFTHAND_DIR>/SwiftHand.jar:$CLASSPATH"
-```
-
-#### Step 6. Execute Tool
-The tool can be executed using following command..
-```
-java edu.berkeley.wtchoi.swift.CommandLine
-``` 
+#### Step 3. Execute the Back-End
+The tool can be executed using the test.sh script generaated by the build scipt.
 For example, to test mininote using SwiftHand with random seed 0 for 1 hour:
 ```
-java edu.berkeley.wtchoi.swift.CommandLine benchmark/mininote.modified.apk swift 3600 0 <OUTPUT_DIR> 
+./test.sh dist/benchmark/mininote.modified.apk swift 3600 0 <OUTPUT_DIR> 
 ```
 
-
-How to Compile and Run
-======================
-#### Step 1. Install Maven.
-Maven (http://maven.apache.org) is a project management and comprehension tool.
+Please replace <OUTPUT_DIR> to the output directory you want. 
+You can try any programs in the benchmark directory by replacing 'mininote.modified.apk' to an appropriate value.
 
 
-#### Step 2. Set up environment variables.
-Build script requires *ADK_ROOT* environemtn variable. Set the variable to the path of your
-installed Android SDK.
 
-#### Step 3. Build
-Type following command to compile the project
+Execute the Front-End
+=====================
+
+#### Step 1. Instrument an Application
+
+With a compiled front-end, you can instrument an apk file using the inst.sh script generated by the build script.
 ```
-cd src
-mvn package
-```
-If build process is succesfull, you will find following files:
-```
-back-end/target/back-end-0.1-jar-with-dependencies.jar
+./inst.sh <TARGET.apk>
 ```
 
-#### Step 4. Execute Tool
-With compiled jar, executing the testing tool is much simpler.
-```
-java -jar back-end-0.1-jar-with-dependencies.jar benchmark/mininote.modified.apk swift 3600 0 <OUTPUT_DIR>
-```
-We assume that a running emulator (or phone) is connected to ADB. If not, please create and boot
-an emulator before start testing.
+Please make sure to replace <TARGET.apk> with the path of the target apk file. You can find two example target files located in *dist/unmofidied* directory.
+If the instrumentation process success, the front-end generates several files including the following two files,
+in the direcory containing the source apk file.
+
+- TARGET.modified.apk
+- TARGET.json
+
+If you have these two files, you are ready to play with the back-end. Please make sure to have these two files in the same directory.
+
+Acknowledgements
+================
+- The front-end only works with ASMDEX library revision 1665 or an older version.
+- The front-end only compiles with Scala compiler 2.9.1.
+- The back-end only works correctly with an applicatio using a "real" screen resolution.
 
 
- 
-
+License
+=======
+The SwiftHand tool follows BSD licnese.
+Please check the License.txt file for more details.
 

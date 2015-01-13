@@ -8,7 +8,10 @@
     <artifactId>swifthand</artifactId>
     <version>0.1</version>
   </parent>
+
+  <groupId>edu.berkeley.wtchoi.swift</groupId>
   <artifactId>back-end</artifactId>
+  <version>0.1</version>
   <packaging>jar</packaging>
   <name>SiwftHand Backend : TestGuide</name>
   <build>

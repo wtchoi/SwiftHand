@@ -42,9 +42,10 @@ public class CommandLine {
             String keystoreFileName = args[1];
             String libJarFileName = args[2];
             Instrument.Mode mode = Instrument.Mode.FullSilent;
-            Instrument.run(inputApk, libJarFileName, keystoreFileName, mode, false);
+            Instrument.run(inputApk, keystoreFileName, libJarFileName, mode, false);
         }
         catch (Exception e){
+            e.printStackTrace();
             String message =
                     "Usage\n" +
                     "-----\n" +
